@@ -46,7 +46,7 @@
               <items>
                 <Button fx:id="disconnectButton" mnemonicParsing="false" onAction="#handleDisconnectButtonAction" prefWidth="97.0" text="Disconnect" />
                 <Button id="connecButton" fx:id="connectButton" mnemonicParsing="false" onAction="#handleConnectButtonAction" prefWidth="97.0" text="Connect" />
-                <Button fx:id="submitmessage" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Send" />
+                <Button id="submitmessage" fx:id="submitMessage" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Send" />
               </items>
             </ToolBar>
             <TextArea fx:id="sendTextArea" disable="true" editable="true" onKeyPressed="#onEnterHit" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />

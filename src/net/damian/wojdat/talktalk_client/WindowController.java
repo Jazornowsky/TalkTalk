@@ -20,8 +20,8 @@ public final class WindowController {
 
 	@FXML private static TextArea messagesArea;
 	@FXML private static TextArea logArea;
-    @FXML private static TextArea sendTextArea;
-    @FXML private static Button submitmessage;
+    @FXML static TextArea sendTextArea;
+    @FXML static Button submitMessage;
     @FXML private static TreeView<String> userListMain;
     @FXML private static TreeItem<String> userListRoot = new TreeItem<>("Users");
     
@@ -54,14 +54,17 @@ public final class WindowController {
 			return;
 		}
 		if(event.getCode() == KeyCode.ENTER) {
-			submitmessage.fire();
+			submitMessage.fire();
 			event.consume();
 		}
 	}
 	
+	public void cleanUsersList() {
+		updateUsersList(new HashMap<Integer, String>());
+	}
+	
 	public void updateUsersList(final HashMap<Integer,String> list) {
 		
-		System.out.println("[DEBUG:] updateUsersList");
 		Platform.runLater(new Runnable() {
 			@Override public void run() {
 				System.out.println(list.toString());
@@ -89,12 +92,10 @@ public final class WindowController {
 	}
 	
 	public Button getSubmitButton() {
-		return submitmessage;
+		return submitMessage;
 	}
 	
 	public void putFormattedLog(String msg) {
-		
-		System.out.println("[DEBUG:] putFormattedLog");
 		
 		class PutFormattedLog implements Runnable {
 			String msg;
@@ -115,8 +116,6 @@ public final class WindowController {
 	}
 	
 	public void putFormattedMessage(String msg) {
-		
-		System.out.println("[DEBUG:] putFormattedMessage");
 		
 		class PutFormattedMessage implements Runnable {
 			String msg;

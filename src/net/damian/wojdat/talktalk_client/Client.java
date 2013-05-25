@@ -58,6 +58,8 @@ public final class Client extends Application {
         stage.setMinWidth(400.0);
         stage.show();
         
+        windowController.cleanUsersList();
+        
         windowController.putFormattedLog("Welcome to TalkTalk !");
         
         new Thread(new Runnable() {
@@ -114,22 +116,23 @@ public final class Client extends Application {
 
 		@Override
 		void preConnect() {
-			// TODO Auto-generated method stub
-			
+			windowController.cleanUsersList();			
 		}
 
 		@Override
 		void postConnect() {
 			incommingMessagesThread = new IncommingMessagesThread(connection, windowController);
 			incommingMessagesThread.start();
+			WindowController.sendTextArea.setDisable(false);
+			WindowController.submitMessage.setDisable(false);
 		}
 
 		@Override
 		void postDisconnect() {
-			System.out.println("[DEBUG:] Checking if incommingMessagesThread isAlive");
+			sendNewInfo("[INFO:] Checking if incommingMessagesThread isAlive");
 			if(incommingMessagesThread != null) {
 				if(incommingMessagesThread.isAlive()) {
-					System.out.println("[DEBUG:] Waiting for incommingMessagesThread to end");
+					sendNewInfo("[INFO:] Waiting for incommingMessagesThread to end");
     	        	try {
 						incommingMessagesThread.join(5000);
 					} catch (InterruptedException e) {
@@ -142,8 +145,8 @@ public final class Client extends Application {
 
 		@Override
 		void preDisconnect() {
-			// TODO Auto-generated method stub
-			
+			WindowController.sendTextArea.setDisable(true);
+			WindowController.submitMessage.setDisable(true);			
 		}
 
     }

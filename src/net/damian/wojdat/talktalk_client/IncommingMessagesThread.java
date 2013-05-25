@@ -34,8 +34,6 @@ public class IncommingMessagesThread extends Thread{
 	    	try {
 	    		
 	    		obj = connection.sockObjIn.readObject();
-
-	    		System.out.println(obj.toString());
 	    		
 	    		if(obj == null) {
 	    			continue;
@@ -45,7 +43,6 @@ public class IncommingMessagesThread extends Thread{
 	    			processMessage((String) obj);		    		
 	    		}
 	    		else if(obj instanceof HashMap<?,?>) {
-	    			System.out.println("[DEBUG:] HashMap = " + obj.toString());
 	    			windowController.updateUsersList((HashMap<Integer, String>) obj);
 	    		}
 	    		
