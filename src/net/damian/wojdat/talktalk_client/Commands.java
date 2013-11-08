@@ -3,6 +3,7 @@ package net.damian.wojdat.talktalk_client;
 public class Commands {
 	public static final String CMD_MSG = "/msg";
 	public static final String CMD_SRV_MSG = "/srvmsg";
+	public static final String CMD_SRV_LOG_MSG = "/srvlogmsg";
 	public static final String CMD_SET_ID = "/setid";
 	public static final String CMD_SET_ID_NAME = "/setidname";
 	public static final String CMD_SRV_DISCONNECT = "/srvdisconnect";

@@ -1,5 +1,5 @@
 package net.damian.wojdat.talktalk_client;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_MSG;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_MSG;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -20,6 +21,7 @@ public final class WindowController {
 
 	@FXML private static TextArea messagesArea;
 	@FXML private static TextArea logArea;
+	@FXML private static CheckBox notifyStatus;
     @FXML static TextArea sendTextArea;
     @FXML static Button submitMessage;
     @FXML private static TreeView<String> userListMain;
@@ -42,6 +44,10 @@ public final class WindowController {
 	
 	@FXML protected void handleDisconnectButtonAction(ActionEvent event) {
 		Client.getInstance().connection.disconnect();		
+	}
+	
+	@FXML protected void handleNotifyStatusChange(ActionEvent event) {
+		Client.getInstance().notifiStatus = notifyStatus.isSelected();
 	}
 	
 	@FXML protected void resetSendTextArea(ActionEvent event) {

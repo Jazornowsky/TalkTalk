@@ -1,12 +1,13 @@
 package net.damian.wojdat.talktalk_client;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_GIVE_USR_NAME;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_MSG;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_REQ_USR_NAME;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_SET_ID;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_SRV_DISCONNECT;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_SRV_MSG;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_SRV_PING;
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_USR_LST_UPDATE;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_GIVE_USR_NAME;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_MSG;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_REQ_USR_NAME;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_SET_ID;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_SRV_DISCONNECT;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_SRV_MSG;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_SRV_LOG_MSG;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_SRV_PING;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_USR_LST_UPDATE;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -81,10 +82,19 @@ public class IncommingMessagesThread extends Thread{
 				}
 				case CMD_MSG: {
 					windowController.putFormattedMessage(message.substring(index+1));
+					if(Client.getInstance().notifiStatus) {
+						Client.gStage.toFront();
+					}
 					return;
 				}
-				case CMD_SRV_MSG: {
+				case CMD_SRV_LOG_MSG: {
 					windowController.putFormattedLog(message.substring(index+1));
+				}
+				case CMD_SRV_MSG: {
+					windowController.putFormattedMessage(message.substring(index+1));
+					if(Client.getInstance().notifiStatus) {
+						Client.gStage.toFront();
+					}
 					return;
 				}
 				case CMD_SRV_PING: {

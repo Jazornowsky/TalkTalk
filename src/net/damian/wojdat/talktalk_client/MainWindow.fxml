@@ -3,9 +3,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.25980392156862747, 0.7875816993464052" focusTraversable="true" minWidth="300.0" orientation="VERTICAL" prefHeight="614.0" xmlns:fx="http://javafx.com/fxml" fx:controller="net.damian.wojdat.talktalk_client.WindowController">
+<SplitPane dividerPositions="0.25980392156862747, 0.7875816993464052" focusTraversable="true" minWidth="300.0" orientation="VERTICAL" prefHeight="614.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="net.damian.wojdat.talktalk_client.WindowController">
   <items>
     <AnchorPane>
       <children>
@@ -47,6 +46,7 @@
                 <Button fx:id="disconnectButton" mnemonicParsing="false" onAction="#handleDisconnectButtonAction" prefWidth="97.0" text="Disconnect" />
                 <Button id="connecButton" fx:id="connectButton" mnemonicParsing="false" onAction="#handleConnectButtonAction" prefWidth="97.0" text="Connect" />
                 <Button id="submitmessage" fx:id="submitMessage" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Send" />
+                <CheckBox fx:id="notifyStatus" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleNotifyStatusChange" selected="true" text="powiadomienia" />
               </items>
             </ToolBar>
             <TextArea fx:id="sendTextArea" disable="true" editable="true" onKeyPressed="#onEnterHit" wrapText="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />

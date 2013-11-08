@@ -1,6 +1,6 @@
 package net.damian.wojdat.talktalk_client;
 
-import static net.damian.wojdat.talktalk_server.TalkTalkCommands.CMD_CLT_PING;
+import static net.damian.wojdat.talktalk_server.Commands.CMD_CLT_PING;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

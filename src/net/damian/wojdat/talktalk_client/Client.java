@@ -17,6 +17,7 @@ public final class Client extends Application {
 	static Stage gStage = null;
 	private String name = "TalkTalk User";
 	ConnectionManager connection = null;
+	boolean notifiStatus = true;
 	WindowController windowController = null;
 	IncommingMessagesThread incommingMessagesThread = null;
 	private static Client CLIENT = null;
@@ -28,6 +29,8 @@ public final class Client extends Application {
 	
     @Override
     public void init() {
+    	double p1 = 2.5;
+    	System.out.println("p1 value = " + (int)p1);
     	CLIENT = this;
     	windowController = new WindowController();
 		connection = new ConnectionManager();
@@ -58,8 +61,7 @@ public final class Client extends Application {
         stage.setMinWidth(400.0);
         stage.show();
         
-        windowController.cleanUsersList();
-        
+        windowController.cleanUsersList();        
         windowController.putFormattedLog("Welcome to TalkTalk !");
         
         new Thread(new Runnable() {
